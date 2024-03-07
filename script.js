@@ -102,5 +102,28 @@ function drawDiscs(peg, slot) {
 
 function update() {draw();}
 
+function swap(from, to) {
+    let value;
+    for (let i = 7; i >= 0; i--) {
+        if (from[i] == 0) {continue;}
+        else {
+            value = from[i];
+            from[i] = 0;
+            break;
+        }
+    }
+
+    for (let i = 7; i >= 0; i--) {
+        if (to[i] == 0) {
+            if(to[i-1] < value) {
+                return -1; //Invalid move
+            }
+            to[i] = value;
+            update();
+            return 1; //Successful move
+        }
+    }
+}
+
 //Update is called to begin program
 update();
