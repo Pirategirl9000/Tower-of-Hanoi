@@ -102,6 +102,7 @@ function drawDiscs(peg, slot) {
 
 function update() {draw();}
 
+//Parameters are both arrays of the pegs
 function swap(from, to) {
     let value;
     for (let i = 7; i >= 0; i--) {
