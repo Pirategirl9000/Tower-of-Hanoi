@@ -44,10 +44,9 @@ function drawDiscs(peg, slot) {
     }
 }
 
-function update() {
-    draw();
-}
+function update() {draw();}
 
+//Gets size and color properties
 class Dimension {
     constructor() {
         disk8Size = 50;
@@ -100,8 +99,7 @@ class Dimension {
             case 8: return this.disk8Color;
         }
     }
-}
+} const dim = new Dimension();
 
-const dim = new Dimension();
-
+//Update is called to begin program
 update();
