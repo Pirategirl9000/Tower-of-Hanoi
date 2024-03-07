@@ -5,47 +5,6 @@ let pegOne =   [8,7,6,5,4,3,2,1]; // ::Eight is at bottom::
 let pegTwo =   [0,0,0,0,0,0,0,0]; // ::Zeros signify empty space::
 let pegThree = [0,0,0,0,0,0,0,0]; // ::ALWAYS FILL RIGHTMOST VALUE FIRST::
 
-//Create display
-function draw() {
-    //Draw peg A
-    ctx.beginPath();
-    ctx.fillStyle = "black"
-
-    ctx.ellipse(94, 70, 6, 30, 0, 0, 2 * Math.PI);
-
-    //Draw peg B
-    ctx.ellipse(154, 70, 6, 30, 0, 0, 2 * Math.PI);
-
-    //Draw peg C
-    ctx.ellipse(214, 70, 6, 30, 0, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.closePath();
-
-    drawDiscs(1, pegOne);
-    drawDiscs(2, pegTwo);
-    drawDiscs(3, pegThree);
-}
-
-function drawDiscs(peg, slot) {
-    let x;
-    let y;
-
-    //determine x of peg in question
-    if (peg == 1) {x = 94;}
-    else if (peg == 2) {x = 154;} 
-    else {x = 214}
-
-    for (let i = 0; i < slot.length; i++) {
-        ctx.beginPath();
-        ctx.fillStyle = dim.getColor(slot[i]);
-        ctx.ellipse(x, 70, dim.getSize(slot[i]), 30, 0, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
-    }
-}
-
-function update() {draw();}
-
 //Gets size and color properties
 class Dimension {
     constructor() {
@@ -100,6 +59,48 @@ class Dimension {
         }
     }
 } const dim = new Dimension();
+
+//Create display
+function draw() {
+    //Draw peg A
+    ctx.beginPath();
+    ctx.fillStyle = "black"
+
+    ctx.ellipse(94, 70, 6, 30, 0, 0, 2 * Math.PI);
+
+    //Draw peg B
+    ctx.ellipse(154, 70, 6, 30, 0, 0, 2 * Math.PI);
+
+    //Draw peg C
+    ctx.ellipse(214, 70, 6, 30, 0, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.closePath();
+
+    drawDiscs(1, pegOne);
+    drawDiscs(2, pegTwo);
+    drawDiscs(3, pegThree);
+}
+
+function drawDiscs(peg, slot) {
+    let x;
+    let y;
+
+    //determine x of peg in question
+    if (peg == 1) {x = 94;}
+    else if (peg == 2) {x = 154;} 
+    else {x = 214}
+
+    for (let i = 0; i < slot.length; i++) {
+        if (slot[i] == 0) {continue;}
+        ctx.beginPath();
+        ctx.fillStyle = dim.getColor(slot[i]);
+        ctx.ellipse(x, 70, dim.getSize(slot[i]), 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+
+function update() {draw();}
 
 //Update is called to begin program
 update();
