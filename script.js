@@ -37,7 +37,10 @@ function drawDiscs(peg, slot) {
 
     for (let i = 0; i < slot.length; i++) {
         ctx.beginPath();
-        ctx.ellipse(x, 70, 6, 30, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = dim.getColor(slot[i]);
+        ctx.ellipse(x, 70, dim.getSize(slot[i]), 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
     }
 }
 
@@ -70,6 +73,32 @@ class Dimension {
 
         disk1Size = 15;
         disk1Color = "violet";
+    }
+
+    getSize(s) {
+        switch (s) {
+            case 1: return this.disk1Size;
+            case 2: return this.disk2Size;
+            case 3: return this.disk3Size;
+            case 4: return this.disk4Size;
+            case 5: return this.disk5Size;
+            case 6: return this.disk6Size;
+            case 7: return this.disk7Size;
+            case 8: return this.disk8Size;
+        }
+    }
+
+    getColor(s) {
+        switch (s) {
+            case 1: return this.disk1Color;
+            case 2: return this.disk2Color;
+            case 3: return this.disk3Color;
+            case 4: return this.disk4Color;
+            case 5: return this.disk5Color;
+            case 6: return this.disk6Color;
+            case 7: return this.disk7Color;
+            case 8: return this.disk8Color;
+        }
     }
 }
 
