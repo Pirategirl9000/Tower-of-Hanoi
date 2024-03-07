@@ -146,10 +146,10 @@ function solve(oddMove) {
 
     //Recursive Case 1 :: Moves 1 piece
     if (oddMove) {
-        if (pegOne.contains(1)) {
+        if (pegOne.includes(1)) {
             pegTwo = swap(pegOne, pegTwo);
             pegOne = remove(pegOne);
-        } else if (pegTwo.contains(1)) {
+        } else if (pegTwo.includes(1)) {
             pegThree = swap(pegTwo, pegThree);
             pegTwo = remove(pegTwo);
         } else {
@@ -161,6 +161,6 @@ function solve(oddMove) {
     }
 
     //Recursive Case 2
-
+    
     
 }
