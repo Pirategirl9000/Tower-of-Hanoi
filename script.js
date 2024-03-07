@@ -109,7 +109,6 @@ function swap(from, to) {
         if (from[i] == 0) {continue;}
         else {
             value = from[i];
-            from[i] = 0;
             break;
         }
     }
@@ -121,7 +120,17 @@ function swap(from, to) {
             }
             to[i] = value;
             update();
-            return 1; //Successful move
+            return to; //Successful move
+        }
+    }
+}
+
+function remove(from) {
+        for (let i = 7; i >= 0; i--) {
+        if (from[i] == 0) {continue;}
+        else {
+            from[i] = 0;
+            return from;
         }
     }
 }
@@ -129,6 +138,29 @@ function swap(from, to) {
 //Update is called to begin program
 update();
 
-function solve() {
+function solve(oddMove) {
+    //Base case
+    if (pegThree == [8,7,6,5,4,3,2,1]) {
+        return 1;
+    }
+
+    //Recursive Case 1 :: Moves 1 piece
+    if (oddMove) {
+        if (pegOne.contains(1)) {
+            pegTwo = swap(pegOne, pegTwo);
+            pegOne = remove(pegOne);
+        } else if (pegTwo.contains(1)) {
+            pegThree = swap(pegTwo, pegThree);
+            pegTwo = remove(pegTwo);
+        } else {
+            pegOne = swap(pegThree, pegTwo);
+            pegThree = remove(pegThree);
+        }
+        
+        return solve(false);
+    }
+
+    //Recursive Case 2
+
     
 }
