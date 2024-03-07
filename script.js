@@ -160,7 +160,7 @@ function solve(oddMove) {
         return solve(false);
     }
 
-    //Recursive Case 2
+    //Recursive Case 2 :: move highest piece that can move to the right
     
     
 }
