@@ -128,3 +128,7 @@ function swap(from, to) {
 
 //Update is called to begin program
 update();
+
+function solve() {
+    
+}
