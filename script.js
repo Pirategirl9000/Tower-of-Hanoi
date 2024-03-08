@@ -259,5 +259,8 @@ function solve(oddMove) {
 
     //Recursive Case 2 :: move highest piece that can move to the right
     let move = getEvenMove();
+    swap(move[0], move[1]);
+    remove(move[0]);
+    return solve(true);
     
 }
