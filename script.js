@@ -141,7 +141,6 @@ function remove(from) {
 }
 
 function getEvenMove() {
-    alert("getEvenMove called");
     let pegOneValue = 0;
     let pegTwoValue = 0;
     let pegThreeValue = 0;
@@ -195,7 +194,7 @@ function getEvenMove() {
     else if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegOne)) {return [pegTwo, pegOne];}
 
     //Take second most greatest value and move that one
-    else if (pegTwoValue > pegTwoValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
+    else if (pegTwoValue > pegOneValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
         if (pegThree.includes(pegTwoValue-1)) {
             return [pegThree, pegOne];
         } else {
