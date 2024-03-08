@@ -109,13 +109,11 @@ function update() {draw();}
 
 //Parameters are both arrays of the pegs
 function swap(from, to) {
-    alert("swap called");
     let value;
     for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
         else {
             value = from[i];
-            alert("swap value determined");
             break;
         }
     }
@@ -123,17 +121,16 @@ function swap(from, to) {
     for (let i = 7; i >= 0; i--) {
         if (to[i] == 0) {
             if(to[i-1] < value) {
+                alert("Invalid move");
                 return -1; //Invalid move
             }
             to[i] = value;
-            alert("successful swap");
             return to; //Successful move
         }
     }
 }
 
 function remove(from) {
-    alert("remove called");
         for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
         else {
@@ -155,6 +152,7 @@ function getEvenMove() {
         }
 
         pegOneValue = pegOne[i];
+        break;
     }
 
     for (let i = 7; i >= 0; i--) {
@@ -163,6 +161,7 @@ function getEvenMove() {
         }
 
         pegTwoValue = pegTwo[i];
+        break;
     }
 
     for (let i = 7; i >= 0; i--) {
@@ -170,7 +169,8 @@ function getEvenMove() {
             continue;
         }
 
-    pegThreeValue = pegThree[i];
+        pegThreeValue = pegThree[i];
+        break;
     }
 
     //pegOne to pegTwo
