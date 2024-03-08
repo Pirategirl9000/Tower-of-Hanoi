@@ -234,6 +234,8 @@ function canMove(from, to) {
 }
 
 function solve(oddMove) {
+    update();
+
     //Base case
     if (pegThree == [8,7,6,5,4,3,2,1]) {
         return 1;
@@ -252,14 +254,19 @@ function solve(oddMove) {
             pegThree = remove(pegThree);
         }
         
-        return solve(false);
+        setTimeout(() => {
+            return solve(false);
+        }, 1000);
     }
 
     //Recursive Case 2 :: move highest piece that can move to the right
     let move = getEvenMove();
     swap(move[0], move[1]);
     remove(move[0]);
-    return solve(true);
+
+    setTimeout(() => {
+        return solve(true);
+    }, 1000);
 }
 
 solve(true);
