@@ -92,7 +92,7 @@ function drawDiscs(peg, slot) {
     //determine x of peg in question
     if (peg == 1) {x = 94;}
     else if (peg == 2) {x = 154;} 
-    else {x = 214}
+    else {x = 214;}
 
     for (let i = 0; i < slot.length; i++) {
         y -= 20;
@@ -109,11 +109,13 @@ function update() {draw();}
 
 //Parameters are both arrays of the pegs
 function swap(from, to) {
+    alert("swap called");
     let value;
     for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
         else {
             value = from[i];
+            alert("swap value determined");
             break;
         }
     }
@@ -124,13 +126,14 @@ function swap(from, to) {
                 return -1; //Invalid move
             }
             to[i] = value;
-            update();
+            alert("successful swap");
             return to; //Successful move
         }
     }
 }
 
 function remove(from) {
+    alert("remove called");
         for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
         else {
@@ -141,6 +144,7 @@ function remove(from) {
 }
 
 function getEvenMove() {
+    alert("getEvenMove called");
     let pegOneValue = 0;
     let pegTwoValue = 0;
     let pegThreeValue = 0;
@@ -217,6 +221,7 @@ function getEvenMove() {
 }
 
 function canMove(from, to) {
+    alert("canMove called");
     let value;
     for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
@@ -238,10 +243,15 @@ function canMove(from, to) {
 }
 
 function solve(oddMove) {
+    alert("solve called");
+
     setTimeout(() => {
+        alert("timeout begins");
         update()
+        alert("update successful");
         //Base case
         if (pegThree == [8,7,6,5,4,3,2,1]) {
+            alert("COMPLETE");
             return 1;
         }
     
@@ -258,6 +268,7 @@ function solve(oddMove) {
                 pegThree = remove(pegThree);
             }
             
+            alert("successful odd move");
             return solve(false);
         }
     
@@ -265,9 +276,12 @@ function solve(oddMove) {
         let move = getEvenMove();
         move[1] = swap(move[0], move[1]);
         move[0] = remove(move[0]);
-    
+
+        alert("successful even move");
         return solve(true);
     }, 1000);
+
+    alert("ERROR: DID NOT RETURN VALUE");
 }
 
 solve(true);
