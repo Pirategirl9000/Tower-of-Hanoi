@@ -149,7 +149,7 @@ function getEvenMove() {
     let pegTwoValue = 0;
     let pegThreeValue = 0;
 
-    for (let i = 7; i >= 0; i++) {
+    for (let i = 7; i >= 0; i--) {
         if (pegOne[i] == 0) {
             continue;
         }
@@ -157,7 +157,7 @@ function getEvenMove() {
         pegOneValue = pegOne[i];
     }
 
-    for (let i = 7; i >= 0; i++) {
+    for (let i = 7; i >= 0; i--) {
         if (pegTwo[i] == 0) {
             continue;
         }
@@ -165,7 +165,7 @@ function getEvenMove() {
         pegTwoValue = pegTwo[i];
     }
 
-    for (let i = 7; i >= 0; i++) {
+    for (let i = 7; i >= 0; i--) {
         if (pegThree[i] == 0) {
             continue;
         }
