@@ -8,29 +8,29 @@ let pegThree = [0,0,0,0,0,0,0,0]; // ::ALWAYS FILL RIGHTMOST VALUE FIRST::
 //Gets size and color properties
 class Dimension {
     constructor() {
-        disk8Size = 50;
-        disk8Color = "red";
+        this.disk8Size = 50;
+        this.disk8Color = "red";
 
-        disk7Size = 45;
-        disk7Color = "orange";
+        this.disk7Size = 45;
+        this.disk7Color = "orange";
 
-        disk6Size = 40;
-        disk6Color = "yellow";
+        this.disk6Size = 40;
+        this.disk6Color = "yellow";
 
-        disk5Size = 35;
-        disk5Color = "greenyellow";
+        this.disk5Size = 35;
+        this.disk5Color = "greenyellow";
 
-        disk4Size = 30;
-        disk4Color = "green";
+        this.disk4Size = 30;
+        this.disk4Color = "green";
 
-        disk3Size = 25;
-        disk3Color = "blue";
+        this.disk3Size = 25;
+        this.disk3Color = "blue";
 
-        disk2Size = 20;
-        disk2Color = "indigo";
+        this.disk2Size = 20;
+        this.disk2Color = "indigo";
 
-        disk1Size = 15;
-        disk1Color = "violet";
+        this.disk1Size = 15;
+        this.disk1Color = "violet";
     }
 
     getSize(s) {
