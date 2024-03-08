@@ -169,10 +169,10 @@ function getEvenMove() {
     if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && canMove(pegOne, pegTwo)) {return [pegOne, pegTwo];}
 
     //pegOne to pegThree
-    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && canMove(pegOne, pegThree) {return [pegOne, pegThree];}
+    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && canMove(pegOne, pegThree)) {return [pegOne, pegThree];}
 
     //Take second most greatest value and move that one
-    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree) {
+    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree)) {
         if (pegTwo.includes(pegOneValue-1)) {
             return [pegTwo, pegThree];
         } else {
@@ -184,10 +184,10 @@ function getEvenMove() {
     if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegThree)) {return [pegTwo, pegThree];}
 
     //pegTwo to pegOne
-    else if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegOne) {return [pegTwo, pegOne];}
+    else if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegOne)) {return [pegTwo, pegOne];}
 
     //Take second most greatest value and move that one
-    else if (pegTwoValue > pegTwoValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne) {
+    else if (pegTwoValue > pegTwoValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
         if (pegThree.includes(pegTwoValue-1)) {
             return [pegThree, pegOne];
         } else {
@@ -199,10 +199,10 @@ function getEvenMove() {
     if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && canMove(pegThree, pegOne)) {return [pegThree, pegOne];}
 
     //pegTwo to pegOne
-    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && canMove(pegThree, pegTwo) {return [pegThree, pegTwo];}
+    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && canMove(pegThree, pegTwo)) {return [pegThree, pegTwo];}
 
     //Take second most greatest value and move that one
-    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo) {
+    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo)) {
         if (pegTwo.includes(pegThreeValue-1)) {
             return [pegTwo, pegThree];
         } else {
