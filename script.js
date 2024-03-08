@@ -254,9 +254,7 @@ function solve(oddMove) {
             pegThree = remove(pegThree);
         }
         
-        setTimeout(() => {
-            return solve(false);
-        }, 1000);
+        return solve(false);
     }
 
     //Recursive Case 2 :: move highest piece that can move to the right
@@ -264,9 +262,7 @@ function solve(oddMove) {
     swap(move[0], move[1]);
     remove(move[0]);
 
-    setTimeout(() => {
-        return solve(true);
-    }, 1000);
+    return solve(true);
 }
 
 solve(true);
