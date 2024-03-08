@@ -135,8 +135,105 @@ function remove(from) {
     }
 }
 
+function getEvenMove() {
+    let pegOneValue = 0;
+    let pegTwoValue = 0;
+    let pegThreeValue = 0;
+    let targetPeg;
+
+    for (let i = 7; i >= 0; i++) {
+        if (pegOne == 0) {
+            continue;
+        }
+
+        pegOneValue = pegOne[i];
+    }
+
+    for (let i = 7; i >= 0; i++) {
+        if (pegTwo == 0) {
+            continue;
+        }
+
+        pegTwoValue = pegTwo[i];
+    }
+
+    for (let i = 7; i >= 0; i++) {
+        if (pegThree == 0) {
+            continue;
+        }
+
+    pegThreeValue = pegThree[i];
+    }
+
+    //pegOne to pegTwo
+    if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && canMove(pegOne, pegTwo)) {return [pegOne, pegTwo];}
+
+    //pegOne to pegThree
+    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && canMove(pegOne, pegThree) {return [pegOne, pegThree];}
+
+    //Take second most greatest value and move that one
+    else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree) {
+        if (pegTwo.includes(pegOneValue-1)) {
+            return [pegTwo, pegThree];
+        } else {
+            return [pegThree, pegOne];
+        }
+    }
+
+    //pegTwo to pegThree
+    if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegThree)) {return [pegTwo, pegThree];}
+
+    //pegTwo to pegOne
+    else if (pegTwoValue > pegThreeValue && pegTwoValue > pegOneValue && canMove(pegTwo, pegOne) {return [pegTwo, pegOne];}
+
+    //Take second most greatest value and move that one
+    else if (pegTwoValue > pegTwoValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne) {
+        if (pegThree.includes(pegTwoValue-1)) {
+            return [pegThree, pegOne];
+        } else {
+            return [pegOne, pegTwo];
+        }
+    }
+
+    //pegTwo to pegThree
+    if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && canMove(pegThree, pegOne)) {return [pegThree, pegOne];}
+
+    //pegTwo to pegOne
+    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && canMove(pegThree, pegTwo) {return [pegThree, pegTwo];}
+
+    //Take second most greatest value and move that one
+    else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo) {
+        if (pegTwo.includes(pegThreeValue-1)) {
+            return [pegTwo, pegThree];
+        } else {
+            return [pegOne, pegTwo];
+        }
+    }
+}
+
 //Update is called to begin program
 update();
+
+function canMove(from, to) {
+    let value;
+    for (let i = 7; i >= 0; i--) {
+        if (from[i] == 0) {continue;}
+        else {
+            value = from[i];
+            break;
+        }
+    }
+
+    for (let i = 7; i >= 0; i--) {
+        if (to[i] == 0) {
+            if(to[i-1] < value) {
+                return false; //Invalid move
+            }
+            
+            return true; //Successful move
+        }
+    }
+}
 
 function solve(oddMove) {
     //Base case
@@ -161,6 +258,6 @@ function solve(oddMove) {
     }
 
     //Recursive Case 2 :: move highest piece that can move to the right
-    
+    let move = getEvenMove();
     
 }
