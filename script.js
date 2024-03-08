@@ -269,5 +269,5 @@ function solve(oddMove) {
 solve(true);
 
 document.addEventListener("error", function(e) {
-    document.getElementById("error").innerHTML = `${e.error}, ${e.lineno}, ${e.message}`;
+    alert(`${e.error}, ${e.lineno}, ${e.message}`);
 })
