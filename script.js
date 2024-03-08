@@ -148,10 +148,9 @@ function getEvenMove() {
     let pegOneValue = 0;
     let pegTwoValue = 0;
     let pegThreeValue = 0;
-    let targetPeg;
 
     for (let i = 7; i >= 0; i++) {
-        if (pegOne == 0) {
+        if (pegOne[i] == 0) {
             continue;
         }
 
@@ -159,7 +158,7 @@ function getEvenMove() {
     }
 
     for (let i = 7; i >= 0; i++) {
-        if (pegTwo == 0) {
+        if (pegTwo[i] == 0) {
             continue;
         }
 
@@ -167,7 +166,7 @@ function getEvenMove() {
     }
 
     for (let i = 7; i >= 0; i++) {
-        if (pegThree == 0) {
+        if (pegThree[i] == 0) {
             continue;
         }
 
@@ -220,16 +219,15 @@ function getEvenMove() {
     }
 }
 
-function delayedResolve() {
+function delayedResolve(x) {
     return new Promise((resolve) => {
         setTimeout(()=> {
-            resolve(true);
+            resolve(x);
         }, 1000);
     });
 }
 
 function canMove(from, to) {
-    alert("canMove called");
     let value;
     for (let i = 7; i >= 0; i--) {
         if (from[i] == 0) {continue;}
@@ -251,12 +249,9 @@ function canMove(from, to) {
 }
 
 async function solve(oddMove) {
-    alert("solve called");
-
-    alert("timeout begins");
-    await delayedResolve();
-    update()
-    alert("update successful");
+    let x = await delayedResolve(true);
+    alert(x);
+    update();
     //Base case
     if (pegThree == [8,7,6,5,4,3,2,1]) {
         alert("COMPLETE");
@@ -276,16 +271,15 @@ async function solve(oddMove) {
             pegThree = remove(pegThree);
         }
         
-        alert("successful odd move");
         return solve(false);
     }
 
     //Recursive Case 2 :: move highest piece that can move to the right
     let move = getEvenMove();
+    alert("even move get success");
     move[1] = swap(move[0], move[1]);
     move[0] = remove(move[0]);
 
-    alert("successful even move");
     return solve(true);
 }
 
