@@ -83,7 +83,7 @@ function draw() {
 
 function drawDiscs(peg, slot) {
     let x;
-    let y;
+    let y = 100;
 
     //determine x of peg in question
     if (peg == 1) {x = 94;}
@@ -91,10 +91,11 @@ function drawDiscs(peg, slot) {
     else {x = 214}
 
     for (let i = 0; i < slot.length; i++) {
+        y -= 20;
         if (slot[i] == 0) {continue;}
         ctx.beginPath();
         ctx.fillStyle = dim.getColor(slot[i]);
-        ctx.ellipse(x, 70, dim.getSize(slot[i]), 30, 0, 0, 2 * Math.PI);
+        ctx.ellipse(x, 70, dim.getSize(slot[i]), 5, 0, 0, 2 * Math.PI);
         ctx.fill();
         ctx.closePath();
     }
@@ -262,5 +263,4 @@ function solve(oddMove) {
     swap(move[0], move[1]);
     remove(move[0]);
     return solve(true);
-    
 }
