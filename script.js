@@ -1,5 +1,9 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+window.onerror = (a, b, c, d, e) => {
+    alert(`${a}, ${b}, ${c}, ${d}, ${e}`);
+    return true;
+}
 
 let pegOne =   [8,7,6,5,4,3,2,1]; // ::Eight is at bottom::
 let pegTwo =   [0,0,0,0,0,0,0,0]; // ::Zeros signify empty space::
@@ -267,8 +271,3 @@ function solve(oddMove) {
 }
 
 solve(true);
-
-window.onerror = (a, b, c, d, e) => {
-    alert(`${a}, ${b}, ${c}, ${d}, ${e}`);
-    return true;
-}
