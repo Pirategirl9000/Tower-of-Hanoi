@@ -95,7 +95,7 @@ function drawDiscs(peg, slot) {
         if (slot[i] == 0) {continue;}
         ctx.beginPath();
         ctx.fillStyle = dim.getColor(slot[i]);
-        ctx.ellipse(x, 70, dim.getSize(slot[i]), 5, 0, 0, 2 * Math.PI);
+        ctx.ellipse(x, y, dim.getSize(slot[i]), 5, 0, 0, 2 * Math.PI);
         ctx.fill();
         ctx.closePath();
     }
@@ -223,7 +223,7 @@ function canMove(from, to) {
     }
 
     for (let i = 7; i >= 0; i--) {
-        if (to[i] == 0) {
+        if (to[i] == 0 && to[i-1] != 0) {
             if(to[i-1] < value) {
                 return false; //Invalid move
             }
@@ -259,8 +259,8 @@ function solve(oddMove) {
     
         //Recursive Case 2 :: move highest piece that can move to the right
         let move = getEvenMove();
-        swap(move[0], move[1]);
-        remove(move[0]);
+        move[1] = swap(move[0], move[1]);
+        move[0] = remove(move[0]);
     
         return solve(true);
     }, 1000);
