@@ -220,6 +220,14 @@ function getEvenMove() {
     }
 }
 
+function delayedResolve() {
+    return new Promise((resolve) => {
+        setTimeout(()=> {
+            resolve(true);
+        }, 1000);
+    });
+}
+
 function canMove(from, to) {
     alert("canMove called");
     let value;
@@ -242,46 +250,43 @@ function canMove(from, to) {
     }
 }
 
-function solve(oddMove) {
+async function solve(oddMove) {
     alert("solve called");
 
-    setTimeout(() => {
-        alert("timeout begins");
-        update()
-        alert("update successful");
-        //Base case
-        if (pegThree == [8,7,6,5,4,3,2,1]) {
-            alert("COMPLETE");
-            return 1;
-        }
-    
-        //Recursive Case 1 :: Moves 1 piece
-        if (oddMove) {
-            if (pegOne.includes(1)) {
-                pegTwo = swap(pegOne, pegTwo);
-                pegOne = remove(pegOne);
-            } else if (pegTwo.includes(1)) {
-                pegThree = swap(pegTwo, pegThree);
-                pegTwo = remove(pegTwo);
-            } else {
-                pegOne = swap(pegThree, pegTwo);
-                pegThree = remove(pegThree);
-            }
-            
-            alert("successful odd move");
-            return solve(false);
-        }
-    
-        //Recursive Case 2 :: move highest piece that can move to the right
-        let move = getEvenMove();
-        move[1] = swap(move[0], move[1]);
-        move[0] = remove(move[0]);
+    alert("timeout begins");
+    await delayedResolve();
+    update()
+    alert("update successful");
+    //Base case
+    if (pegThree == [8,7,6,5,4,3,2,1]) {
+        alert("COMPLETE");
+        return 1;
+    }
 
-        alert("successful even move");
-        return solve(true);
-    }, 1000);
+    //Recursive Case 1 :: Moves 1 piece
+    if (oddMove) {
+        if (pegOne.includes(1)) {
+            pegTwo = swap(pegOne, pegTwo);
+            pegOne = remove(pegOne);
+        } else if (pegTwo.includes(1)) {
+            pegThree = swap(pegTwo, pegThree);
+            pegTwo = remove(pegTwo);
+        } else {
+            pegOne = swap(pegThree, pegTwo);
+            pegThree = remove(pegThree);
+        }
+        
+        alert("successful odd move");
+        return solve(false);
+    }
 
-    alert("ERROR: DID NOT RETURN VALUE");
+    //Recursive Case 2 :: move highest piece that can move to the right
+    let move = getEvenMove();
+    move[1] = swap(move[0], move[1]);
+    move[0] = remove(move[0]);
+
+    alert("successful even move");
+    return solve(true);
 }
 
 solve(true);
