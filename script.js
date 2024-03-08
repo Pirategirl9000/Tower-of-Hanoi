@@ -268,6 +268,7 @@ function solve(oddMove) {
 
 solve(true);
 
-document.addEventListener("error", function(e) {
-    alert(`${e.error}, ${e.lineno}, ${e.message}`);
-})
+window.onerror = (a, b, c, d, e) => {
+    alert(`${a}, ${b}, ${c}, ${d}, ${e}`);
+    return true;
+}
