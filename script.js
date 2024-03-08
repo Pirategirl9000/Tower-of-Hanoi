@@ -212,9 +212,6 @@ function getEvenMove() {
     }
 }
 
-//Update is called to begin program
-update();
-
 function canMove(from, to) {
     let value;
     for (let i = 7; i >= 0; i--) {
@@ -264,3 +261,5 @@ function solve(oddMove) {
     remove(move[0]);
     return solve(true);
 }
+
+solve(true);
