@@ -234,35 +234,36 @@ function canMove(from, to) {
 }
 
 function solve(oddMove) {
-    update();
-
-    //Base case
-    if (pegThree == [8,7,6,5,4,3,2,1]) {
-        return 1;
-    }
-
-    //Recursive Case 1 :: Moves 1 piece
-    if (oddMove) {
-        if (pegOne.includes(1)) {
-            pegTwo = swap(pegOne, pegTwo);
-            pegOne = remove(pegOne);
-        } else if (pegTwo.includes(1)) {
-            pegThree = swap(pegTwo, pegThree);
-            pegTwo = remove(pegTwo);
-        } else {
-            pegOne = swap(pegThree, pegTwo);
-            pegThree = remove(pegThree);
+    setTimeout(() => {
+        update()
+        //Base case
+        if (pegThree == [8,7,6,5,4,3,2,1]) {
+            return 1;
         }
-        
-        return solve(false);
-    }
-
-    //Recursive Case 2 :: move highest piece that can move to the right
-    let move = getEvenMove();
-    swap(move[0], move[1]);
-    remove(move[0]);
-
-    return solve(true);
+    
+        //Recursive Case 1 :: Moves 1 piece
+        if (oddMove) {
+            if (pegOne.includes(1)) {
+                pegTwo = swap(pegOne, pegTwo);
+                pegOne = remove(pegOne);
+            } else if (pegTwo.includes(1)) {
+                pegThree = swap(pegTwo, pegThree);
+                pegTwo = remove(pegTwo);
+            } else {
+                pegOne = swap(pegThree, pegTwo);
+                pegThree = remove(pegThree);
+            }
+            
+            return solve(false);
+        }
+    
+        //Recursive Case 2 :: move highest piece that can move to the right
+        let move = getEvenMove();
+        swap(move[0], move[1]);
+        remove(move[0]);
+    
+        return solve(true);
+    }, 1000);
 }
 
 solve(true);
