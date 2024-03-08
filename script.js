@@ -120,7 +120,10 @@ function swap(from, to) {
 
     for (let i = 7; i >= 0; i--) {
         if (to[i] == 0) {
-            if(to[i-1] < value) {
+            if (i == 0) {
+                console.log("bottom section");
+            }
+            else if(to[i-1] < value) {
                 alert("Invalid move");
                 return -1; //Invalid move
             }
