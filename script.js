@@ -123,7 +123,7 @@ function swap(from, to) {
             if (i == 0) {
                 console.log("bottom section");
             }
-            else if(to[i-1] < value) {
+            else if(to[i-1] < value && to[i-1] != 0) {
                 alert(`Failed to swap ${value} from ${from} to ${to}`);
                 return -1; //Invalid move
             }
