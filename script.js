@@ -171,10 +171,18 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree)) {
-        if (pegTwo.includes(pegOneValue-1) && canMove(pegTwo, pegThree)) {
-            return [pegTwo, pegThree];
+        if (pegTwo.includes(pegOneValue-1)) {
+            if (canMove(pegTwo, pegThree)) {
+                return [pegTwo, pegThree];
+            } else {
+                return [pegTwo, pegOne];
+            }
         } else {
-            return [pegThree, pegOne];
+            if (canMove(pegThree, pegOne)) {
+                return [pegThree, pegOne];
+            } else {
+                return [pegThree, pegTwo];
+            }
         }
     }
 
@@ -186,10 +194,18 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegTwoValue > pegOneValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
-        if (pegThree.includes(pegTwoValue-1) && canMove(pegThree, pegOne)) {
-            return [pegThree, pegOne];
+        if (pegThree.includes(pegTwoValue-1)) {
+            if (canMove(pegThree, pegOne)) {
+                return [pegThree, pegOne];
+            } else {
+                return [pegThree, pegTwo];
+            }
         } else {
-            return [pegOne, pegTwo];
+            if (canMove(pegOne, pegTwo)) {
+                return [pegOne, pegTwo];
+            } else {
+                return [pegOne, pegThree];
+            }
         }
     }
 
@@ -201,10 +217,18 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo)) {
-        if (pegTwo.includes(pegThreeValue-1) && canMove(pegTwo, pegThree)) {
-            return [pegTwo, pegThree];
+        if (pegTwo.includes(pegThreeValue-1)) {
+            if (canMove(pegTwo, pegThree)) {
+                return [pegTwo, pegThree];
+            } else {
+                return [pegTwo, pegOne];
+            }
         } else {
-            return [pegOne, pegTwo];
+            if (canMove(pegOne, pegTwo)) {
+                return [pegOne, pegTwo];
+            } else {
+                return [pegOne, pegThree];
+            }
         }
     }
 }
