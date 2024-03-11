@@ -263,7 +263,7 @@ function canMove(from, to) {
             else if (to[i-1] == 0) {continue;}
         }
 
-        if (to[i] < value) {return false;}
+        if (to[i-1] < value) {return false;}
     }
 }
 
