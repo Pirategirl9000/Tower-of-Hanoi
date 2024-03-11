@@ -143,27 +143,21 @@ function getEvenMove() {
     let pegThreeValue = 0;
 
     for (let i = 7; i >= 0; i--) {
-        if (pegOne[i] == 0) {
-            continue;
-        }
+        if (pegOne[i] == 0) {continue;}
 
         pegOneValue = pegOne[i];
         break;
     }
 
     for (let i = 7; i >= 0; i--) {
-        if (pegTwo[i] == 0) {
-            continue;
-        }
+        if (pegTwo[i] == 0) {continue;}
 
         pegTwoValue = pegTwo[i];
         break;
     }
 
     for (let i = 7; i >= 0; i--) {
-        if (pegThree[i] == 0) {
-            continue;
-        }
+        if (pegThree[i] == 0) {continue;}
 
         pegThreeValue = pegThree[i];
         break;
@@ -262,7 +256,7 @@ async function solve(oddMove) {
             pegThree = swap(pegTwo, pegThree);
             pegTwo = remove(pegTwo);
         } else {
-            pegOne = swap(pegThree, pegTwo);
+            pegOne = swap(pegThree, pegOne);
             pegThree = remove(pegThree);
         }
         
@@ -272,6 +266,8 @@ async function solve(oddMove) {
         let move = getEvenMove();
         move[1] = swap(move[0], move[1]);
         move[0] = remove(move[0]);
+
+        x = await delayedResolve(true);
 
         return solve(true);
     }
