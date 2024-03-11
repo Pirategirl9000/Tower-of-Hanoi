@@ -171,17 +171,19 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree)) {
-        if (pegTwo.includes(pegOneValue-1)) {
-            if (canMove(pegTwo, pegThree)) {
-                return [pegTwo, pegThree];
-            } else {
-                return [pegTwo, pegOne];
-            }
-        } else {
-            if (canMove(pegThree, pegOne)) {
-                return [pegThree, pegOne];
-            } else {
-                return [pegThree, pegTwo];
+        for (let i = 1; i < 8; i++) {
+            if (pegTwo.includes(pegOneValue-i)) {
+                if (canMove(pegTwo, pegThree)) {
+                    return [pegTwo, pegThree];
+                } else {
+                    return [pegTwo, pegOne];
+                }
+            } else if (pegThree.includes(pegOneValue-i)) {
+                if (canMove(pegThree, pegOne)) {
+                    return [pegThree, pegOne];
+                } else {
+                    return [pegThree, pegTwo];
+                }
             }
         }
     }
@@ -194,17 +196,19 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegTwoValue > pegOneValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
-        if (pegThree.includes(pegTwoValue-1)) {
-            if (canMove(pegThree, pegOne)) {
-                return [pegThree, pegOne];
-            } else {
-                return [pegThree, pegTwo];
-            }
-        } else {
-            if (canMove(pegOne, pegTwo)) {
-                return [pegOne, pegTwo];
-            } else {
-                return [pegOne, pegThree];
+        for (let i = 1; i < 8; i++) {
+            if (pegThree.includes(pegTwoValue-i)) {
+                if (canMove(pegThree, pegOne)) {
+                    return [pegThree, pegOne];
+                } else {
+                    return [pegThree, pegTwo];
+                }
+            } else if (pegOne.includes(pegTwoValue-i)){
+                if (canMove(pegOne, pegTwo)) {
+                    return [pegOne, pegTwo];
+                } else {
+                    return [pegOne, pegThree];
+                }
             }
         }
     }
@@ -217,17 +221,19 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo)) {
-        if (pegTwo.includes(pegThreeValue-1)) {
-            if (canMove(pegTwo, pegThree)) {
-                return [pegTwo, pegThree];
+        for (let i = 1; i < 8; i++) {
+            if (pegTwo.includes(pegThreeValue-i)) {
+                if (canMove(pegTwo, pegThree)) {
+                    return [pegTwo, pegThree];
+                } else if (pegOne.includes(pegThreeValue-i)) {
+                    return [pegTwo, pegOne];
+                }
             } else {
-                return [pegTwo, pegOne];
-            }
-        } else {
-            if (canMove(pegOne, pegTwo)) {
-                return [pegOne, pegTwo];
-            } else {
-                return [pegOne, pegThree];
+                if (canMove(pegOne, pegTwo)) {
+                    return [pegOne, pegTwo];
+                } else {
+                    return [pegOne, pegThree];
+                }
             }
         }
     }
