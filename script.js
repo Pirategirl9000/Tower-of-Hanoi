@@ -119,13 +119,8 @@ function swap(from, to) {
 
     for (let i = 7; i >= 0; i--) {
         if (to[i] == 0) {
-            if (i == 0) {
-                console.log("bottom section");
-            }
-            else if(to[i-1] < value && to[i-1] != 0) {
-                alert(`Failed to swap ${value} from ${from} to ${to}`);
-                return -1; //Invalid move
-            }
+            if (i == 0) {console.log("bottom");}
+            else if (to[i-1] == 0) {continue;}
             to[i] = value;
             return to; //Successful move
         }
