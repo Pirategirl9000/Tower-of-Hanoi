@@ -124,7 +124,7 @@ function swap(from, to) {
                 console.log("bottom section");
             }
             else if(to[i-1] < value) {
-                alert("Invalid move");
+                alert(`Failed to swap ${value} from ${from} to ${to}`);
                 return -1; //Invalid move
             }
             to[i] = value;
