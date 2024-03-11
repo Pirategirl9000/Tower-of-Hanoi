@@ -106,8 +106,6 @@ function drawDiscs(peg, slot) {
     }
 }
 
-function update() {draw();}
-
 //Parameters are both arrays of the pegs
 function swap(from, to) {
     let value;
@@ -253,7 +251,7 @@ function canMove(from, to) {
 
 async function solve(oddMove) {
     let x = await delayedResolve(true);
-    update();
+    draw();
     //Base case
     if (pegThree == [8,7,6,5,4,3,2,1]) {
         alert("COMPLETE");
@@ -277,7 +275,6 @@ async function solve(oddMove) {
     } else {
     //Recursive Case 2 :: move highest piece that can move to the right
         let move = getEvenMove();
-        alert("even move get success");
         move[1] = swap(move[0], move[1]);
         move[0] = remove(move[0]);
 
