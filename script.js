@@ -252,7 +252,6 @@ function canMove(from, to) {
 
 async function solve(oddMove) {
     let x = await delayedResolve(true);
-    alert(x);
     update();
     //Base case
     if (pegThree == [8,7,6,5,4,3,2,1]) {
@@ -274,15 +273,15 @@ async function solve(oddMove) {
         }
         
         return solve(false);
-    }
-
+    } else {
     //Recursive Case 2 :: move highest piece that can move to the right
-    let move = getEvenMove();
-    alert("even move get success");
-    move[1] = swap(move[0], move[1]);
-    move[0] = remove(move[0]);
+        let move = getEvenMove();
+        alert("even move get success");
+        move[1] = swap(move[0], move[1]);
+        move[0] = remove(move[0]);
 
-    return solve(true);
+        return solve(true);
+    }
 }
 
 solve(true);
