@@ -88,7 +88,7 @@ function draw() {
 
 function drawDiscs(peg, slot) {
     let x;
-    let y = 80;
+    let y = 100;
 
     //determine x of peg in question
     if (peg == 1) {x = 94;}
@@ -278,13 +278,11 @@ async function solve(oddMove) {
     let x = await delayedResolve(true);
     draw();
     //Base case
-    if (pegThree == [8,7,6,5,4,3,2,1]) {
+    if (JSON.stringify(pegThree) == JSON.stringify([8,7,6,5,4,3,2,1])) {
         return 1;
     }
 
-    if (pegThree == [8,7,6,5,4,3,2,0]) {
-        return solve(true);
-    }
+
 
     //Recursive Case 1 :: Moves 1 piece
     if (oddMove) {
