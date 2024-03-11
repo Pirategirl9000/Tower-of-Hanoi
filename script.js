@@ -66,6 +66,7 @@ class Dimension {
 
 //Create display
 function draw() {
+    ctx.clearRect(0,0,document.width,document.height);
     //Draw peg A
     ctx.beginPath();
     ctx.fillStyle = "black"
