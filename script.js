@@ -172,13 +172,13 @@ function getEvenMove() {
     //Take second most greatest value and move that one
     else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree)) {
         for (let i = 1; i < 8; i++) {
-            if (pegTwo.includes(pegOneValue-i)) {
+            if (getTop(pegTwo) == pegOneValue-i) {
                 if (canMove(pegTwo, pegThree)) {
                     return [pegTwo, pegThree];
                 } else if (canMove(pegTwo, pegOne)) {
                     return [pegTwo, pegOne];
                 }
-            } else if (pegThree.includes(pegOneValue-i)) {
+            } else if (getTop(pegThree) == pegOneValue-i) {
                 if (canMove(pegThree, pegOne)) {
                     return [pegThree, pegOne];
                 } else if (canMove(pegThree, pegTwo)) {
@@ -197,13 +197,13 @@ function getEvenMove() {
     //Take second most greatest value and move that one
     else if (pegTwoValue > pegOneValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
         for (let i = 1; i < 8; i++) {
-            if (pegThree.includes(pegTwoValue-i)) {
+            if (getTop(pegThree) == pegTwoValue-i) {
                 if (canMove(pegThree, pegOne)) {
                     return [pegThree, pegOne];
                 } else if (canMove(pegThree, pegTwo)) {
                     return [pegThree, pegTwo];
                 }
-            } else if (pegOne.includes(pegTwoValue-i)) {
+            } else if (getTop(pegOne) == pegTwoValue-i) {
                 if (canMove(pegOne, pegTwo)) {
                     return [pegOne, pegTwo];
                 } else if (canMove(pegOne, pegThree)) {
@@ -222,13 +222,13 @@ function getEvenMove() {
     //Take second most greatest value and move that one
     else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo)) {
         for (let i = 1; i < 8; i++) {
-            if (pegTwo.includes(pegThreeValue-i)) {
+            if (getTop(pegTwo) == pegThreeValue-i) {
                 if (canMove(pegTwo, pegThree)) {
                     return [pegTwo, pegThree];
                 } else if (canMove(pegTwo, pegOne)) {
                     return [pegTwo, pegOne];
                 }
-            } else if (pegOne.includes(pegThreeValue-i)) {
+            } else if (getTop(pegOne) == pegThreeValue-i) {
                 if (canMove(pegOne, pegTwo)) {
                     return [pegOne, pegTwo];
                 } else if (canMove(pegOne, pegThree)){
@@ -264,6 +264,13 @@ function canMove(from, to) {
             else if (to[i-1] > value) {return true;}
             else {return false;}
         }
+    }
+}
+
+function getTop(from) {
+    for (let i = 7; i >= 0; i--) {
+        if (from[i] == 0) {continue;}
+        else {return from[i];}
     }
 }
 
