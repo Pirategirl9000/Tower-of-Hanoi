@@ -200,7 +200,7 @@ function getEvenMove() {
             if (pegThree.includes(pegTwoValue-i)) {
                 if (canMove(pegThree, pegOne)) {
                     return [pegThree, pegOne];
-                } else if (canMove(pegThree, pegOne)) {
+                } else if (canMove(pegThree, pegTwo)) {
                     return [pegThree, pegTwo];
                 }
             } else {
