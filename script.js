@@ -2,7 +2,7 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 window.onerror = (a, b, c, d, e) => {
     alert(`${a}, ${b}, ${c}, ${d}, ${e}`);
-    return true;
+    return -1;
 }
 
 let pegOne =   [8,7,6,5,4,3,2,1]; // ::Eight is at bottom::
@@ -138,8 +138,8 @@ function remove(from) {
 }
 
 function getEvenMove() {
-    let pegOneValue = 0;
-    let pegTwoValue = 0;
+    let pegOneValue =   0;
+    let pegTwoValue =   0;
     let pegThreeValue = 0;
 
     for (let i = 7; i >= 0; i--) {
@@ -171,7 +171,7 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegOneValue > pegTwoValue && pegOneValue > pegThreeValue && !canMove(pegOne, pegTwo) && !canMove(pegOne, pegThree)) {
-        if (pegTwo.includes(pegOneValue-1)) {
+        if (pegTwo.includes(pegOneValue-1) && canMove(pegTwo, pegThree)) {
             return [pegTwo, pegThree];
         } else {
             return [pegThree, pegOne];
@@ -186,7 +186,7 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegTwoValue > pegOneValue && pegTwoValue > pegThreeValue && !canMove(pegTwo, pegThree) && !canMove(pegTwo, pegOne)) {
-        if (pegThree.includes(pegTwoValue-1)) {
+        if (pegThree.includes(pegTwoValue-1) && canMove(pegThree, pegOne)) {
             return [pegThree, pegOne];
         } else {
             return [pegOne, pegTwo];
@@ -201,7 +201,7 @@ function getEvenMove() {
 
     //Take second most greatest value and move that one
     else if (pegThreeValue > pegOneValue && pegThreeValue > pegTwoValue && !canMove(pegThree, pegOne) && !canMove(pegThree, pegTwo)) {
-        if (pegTwo.includes(pegThreeValue-1)) {
+        if (pegTwo.includes(pegThreeValue-1) && canMove(pegTwo, pegThree)) {
             return [pegTwo, pegThree];
         } else {
             return [pegOne, pegTwo];
