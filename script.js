@@ -178,7 +178,7 @@ function getEvenMove() {
                 } else if (canMove(pegTwo, pegOne)) {
                     return [pegTwo, pegOne];
                 }
-            } else {
+            } else if (pegThree.includes(pegOneValue-i)) {
                 if (canMove(pegThree, pegOne)) {
                     return [pegThree, pegOne];
                 } else if (canMove(pegThree, pegTwo)) {
@@ -203,7 +203,7 @@ function getEvenMove() {
                 } else if (canMove(pegThree, pegTwo)) {
                     return [pegThree, pegTwo];
                 }
-            } else {
+            } else if (pegOne.includes(pegTwoValue-i)) {
                 if (canMove(pegOne, pegTwo)) {
                     return [pegOne, pegTwo];
                 } else if (canMove(pegOne, pegThree)) {
@@ -228,7 +228,7 @@ function getEvenMove() {
                 } else if (canMove(pegTwo, pegOne)) {
                     return [pegTwo, pegOne];
                 }
-            } else {
+            } else if (pegOne.includes(pegThreeValue-i)) {
                 if (canMove(pegOne, pegTwo)) {
                     return [pegOne, pegTwo];
                 } else if (canMove(pegOne, pegThree)){
