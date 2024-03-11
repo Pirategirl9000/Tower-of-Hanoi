@@ -66,7 +66,7 @@ class Dimension {
 
 //Create display
 function draw() {
-    ctx.clearRect(0,0,document.width,document.height);
+    ctx.clearRect(0, 0, 3000, 3000);
     //Draw peg A
     ctx.beginPath();
     ctx.fillStyle = "black"
@@ -88,7 +88,7 @@ function draw() {
 
 function drawDiscs(peg, slot) {
     let x;
-    let y = 100;
+    let y = 80;
 
     //determine x of peg in question
     if (peg == 1) {x = 94;}
@@ -96,7 +96,7 @@ function drawDiscs(peg, slot) {
     else {x = 214;}
 
     for (let i = 0; i < slot.length; i++) {
-        y -= 20;
+        y -= 10;
         if (slot[i] == 0) {continue;}
         ctx.beginPath();
         ctx.fillStyle = dim.getColor(slot[i]);
@@ -224,7 +224,7 @@ function delayedResolve(x) {
     return new Promise((resolve) => {
         setTimeout(()=> {
             resolve(x);
-        }, 1000);
+        }, 250);
     });
 }
 
