@@ -228,13 +228,12 @@ function canMove(from, to) {
     }
 
     for (let i = 7; i >= 0; i--) {
-        if (to[i] == 0 && to[i-1] != 0) {
-            if(to[i-1] < value) {
-                return false; //Invalid move
-            }
-            
-            return true; //Successful move
+        if (to[i] == 0) {
+            if (i == 0) {return true;}
+            else if (to[i-1] == 0) {continue;}
         }
+
+        if (to[i] < value) {return false;}
     }
 }
 
@@ -266,8 +265,6 @@ async function solve(oddMove) {
         let move = getEvenMove();
         move[1] = swap(move[0], move[1]);
         move[0] = remove(move[0]);
-
-        x = await delayedResolve(true);
 
         return solve(true);
     }
