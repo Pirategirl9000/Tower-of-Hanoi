@@ -279,8 +279,11 @@ async function solve(oddMove) {
     draw();
     //Base case
     if (pegThree == [8,7,6,5,4,3,2,1]) {
-        alert("COMPLETE");
         return 1;
+    }
+
+    if (pegThree == [8,7,6,5,4,3,2,0]) {
+        return solve(true);
     }
 
     //Recursive Case 1 :: Moves 1 piece
